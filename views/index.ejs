@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="description" content="Free Web tutorials">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="John Doe">
+<%- include('partials/header', 
+{
+  title: 'Express - Superchat',
+  description: "A superchat application in Express",
+  keywords: 'Express, Chat'
+}) %>
+
+<body id="body">
+  <h1 class="bg-light-red">Express Chat</h1>
+  <article class="mw5 mw6-ns center pt4">
+    <div class="aspect-ratio aspect-ratio--16x9 mb4">
+      <div class="aspect-ratio--object cover" style="background:url(http://mrmrs.github.io/photos/001.jpg) center;"></div>
+    </div>
+  </article>
+  
+  <%- include('partials/footer') %>
+  <%- include('partials/scripts') %>
+</body>
+</html>
