@@ -8,7 +8,7 @@
 
   <body id="body">
     <%- include('partials/navbar') %>
-
+      <p id="error" class="f4 fw6 ph0 mh0 bg-dark-red"></p>
       <div id="userFormContainer" class="pa4 black-80">
         <form id="userForm" method="POST">
           <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
@@ -41,11 +41,17 @@
             </form>
             <div class="outline bg-white pa2">
               <p>Messages</p>
+              <ul id="messageList" class="list pl0">
+                
+              </ul>
             </div>
           </div>
           <div class="fl w-100 w-50-ns pa2">
             <div class="outline bg-white pa2">
               <p>Users chatting</p>
+              <ul id="userList" class="list pl0">
+                
+              </ul>
             </div>
           </div>
         </div>

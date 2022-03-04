@@ -49,7 +49,6 @@ io.sockets.on('connection', (socket) => {
   });
 
   function updateUsers(){
-    console.log('Updated users')
     io.sockets.emit('users', users);
   }
 });

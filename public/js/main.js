@@ -1,12 +1,14 @@
 $(document).ready(function () {
   let socket = io().connect("http://localhost:5000");
-  console.log("still works ready!", socket);
 
   let userForm = $("#userForm");
   let chatForm = $("#chatForm");
   let username = $("#username");
   let message = $("#chatInput");
-  
+  let error = $("#error");
+  let userList = $("#userList");
+  let messageList = $("#messageList");
+
   // User enters chat
   userForm.on("submit", function (e) {
     $("#userFormContainer").hide();
@@ -22,18 +24,23 @@ $(document).ready(function () {
 
   // Submit Chat Form
   chatForm.on("submit", function (e) {
-    console.log('Chat submit called..')
     socket.emit("sendMessage", message.val());
     message.val("");
     e.preventDefault();
   });
 
-  socket.on('showMessage', function(data){
-    console.log('Data is ', data)
+  socket.on("showMessage", function (data) {
+    messageList.append(
+      "<strong>" + data.user + "</strong>: " + data.msg + "<br>"
+    );
   });
 
   // Display Usernames
-  socket.on("users", (users) => {
-    console.log("Emitted users", users);
+  socket.on("users", (data) => {
+    let html = "";
+    for (let i = 0; i < data.length; i++) {
+      html += "<li>" + data[i] + "</li>";
+    }
+    userList.html(html);
   });
 });
