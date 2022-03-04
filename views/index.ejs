@@ -3,22 +3,56 @@
 <meta name="description" content="Free Web tutorials">
 <meta name="keywords" content="HTML, CSS, JavaScript">
 <meta name="author" content="John Doe">
-<%- include('partials/header', 
-{
-  title: 'Express - Superchat',
-  description: "A superchat application in Express",
-  keywords: 'Express, Chat'
-}) %>
+<%- include('partials/header', { title: 'Express - Superchat' , description: "A superchat application in Express" ,
+  keywords: 'Express, Chat' }) %>
 
-<body id="body">
-  <h1 class="bg-light-red">Express Chat</h1>
-  <article class="mw5 mw6-ns center pt4">
-    <div class="aspect-ratio aspect-ratio--16x9 mb4">
-      <div class="aspect-ratio--object cover" style="background:url(http://mrmrs.github.io/photos/001.jpg) center;"></div>
-    </div>
-  </article>
-  
-  <%- include('partials/footer') %>
-  <%- include('partials/scripts') %>
-</body>
+  <body id="body">
+    <%- include('partials/navbar') %>
+
+      <div id="userFormContainer" class="pa4 black-80">
+        <form id="userForm" method="POST">
+          <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+            <h3 class="f4 fw6 ph0 mh0">Express your heart out!</h3>
+            <div class="mt3">
+              <label class="db fw6 lh-copy f6" for="username">Username</label>
+              <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text"
+                name="username" id="username">
+            </div>
+          </fieldset>
+          <div class="">
+            <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit"
+              value="Join Room">
+          </div>
+        </form>
+      </div>
+
+      <div class="mw9 center ph3-ns">
+        <div class="cf mv5 ph2-ns">
+          <div class="fl w-100 w-50-ns pa2">
+            <form id="chatForm" method="POST">
+              <div>
+                <input placeholder="Type something here!" class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text"
+                  name="chatInput" id="chatInput">
+              </div>
+              <div>
+                <input class="b ph4 mv2 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit"
+                  value="Submit">
+              </div>
+            </form>
+            <div class="outline bg-white pa2">
+              <p>Messages</p>
+            </div>
+          </div>
+          <div class="fl w-100 w-50-ns pa2">
+            <div class="outline bg-white pa2">
+              <p>Users chatting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('partials/footer') %>
+      <%- include('partials/scripts') %>
+  </body>
+
 </html>
