@@ -30,18 +30,20 @@ let users = []
 // Socket.io connect
 io.sockets.on('connection', (socket) => {  
   socket.on('setUser', (data, callback) => {
-    if(users.indexOf(data) !== -1){
+    if(users.indexOf(data.user) !== -1){
       callback(false);
     } else {
       callback(true);
-      socket.username = data;
+      const defaultAvatar = 'https://aeroclub-issoire.fr/wp-content/uploads/2020/05/image-not-found-300x225.jpg'
+      socket.username = data.user;
+      socket.imageUrl = data.avatar ? data.avatar : defaultAvatar;
       users.push(socket.username);
       updateUsers();
     }
   });
 
   socket.on('sendMessage', function(data){
-    io.sockets.emit('showMessage', {msg: data, user: socket.username});
+    io.sockets.emit('showMessage', {msg: data, user: socket.username, avatar: socket.imageUrl});
   });
 
   socket.on('disconnect', function(data){

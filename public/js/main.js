@@ -4,8 +4,8 @@ $(document).ready(function () {
   let userForm = $("#userForm");
   let chatForm = $("#chatForm");
   let username = $("#username");
+  let avatarLink = $('#avatarLink');
   let message = $("#chatInput");
-  let error = $("#error");
   let userList = $("#userList");
   let messageList = $("#messageList");
   let chatContainer = $('#chatContainer');
@@ -16,7 +16,7 @@ $(document).ready(function () {
   // User enters chat
   userForm.on("submit", function (e) {
     $("#userFormContainer").hide();
-    socket.emit("setUser", username.val(), function (data) {
+    socket.emit("setUser", { user: username.val(), avatar: avatarLink.val() }, function (data) {
       if (data) {
         $("#userFormContainer").hide();
         chatContainer.fadeIn();
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
   socket.on("showMessage", function (data) {
     messageList.append(
-      "<strong>" + data.user + "</strong>: " + data.msg + "<br>"
+      "<div class='messageContainer'>" + `<img class="chatImage" src="${data.avatar}" alt="Invalid image" />`+ "<strong>" + data.user + "</strong>: " + data.msg + "</div>"
     );
   });
 
