@@ -1,4 +1,4 @@
-# Chat Groups using Express, Vue, Socket IO, MongoDB, Tailwind CSS and Vuex
+# Chat Groups using Express, Socket IO, Jquery and Tachyons
 
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
@@ -13,6 +13,9 @@ This is a chat application created in Express, Jquery and Tachyons CSS. It is th
 
 The project is inspired by a similar project which I came across in a Node and Express course by Brad Traversy.
 
+The project uses Tachyons CSS framework for UI related stuff. I am not using CDN, instead have the entire minified version inside the public directory that is why Github is reading this as a CSS project which in all honesty, it is not.
+
+
 ## Built With
 
 * [Express](https://expressjs.com/)
@@ -22,7 +25,7 @@ The project is inspired by a similar project which I came across in a Node and E
 
 ## Authors
 
-* **Amit Prafulla (APFirebolt)** - (http://amitprafull.com/)
+* **Amit Prafulla (APFirebolt)** - (https://apgiiit.com/)
 
 ## Project setup
 
