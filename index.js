@@ -1,8 +1,6 @@
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const http = require("http");
-const cors = require("cors");
 
 const Server = require("socket.io").Server
 
@@ -14,12 +12,7 @@ const io = new Server(server)
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.get("/", async function (req, res, next) {
   res.render("index");
@@ -57,11 +50,6 @@ io.sockets.on('connection', (socket) => {
 
 app.get("*", function (req, res) {
   res.render("notFound");
-});
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
 });
 
 server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));
