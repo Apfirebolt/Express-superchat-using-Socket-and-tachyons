@@ -8,6 +8,10 @@ $(document).ready(function () {
   let error = $("#error");
   let userList = $("#userList");
   let messageList = $("#messageList");
+  let chatContainer = $('#chatContainer');
+  let welcomeMessage = $("#welcomeMessage");
+
+  chatContainer.hide()
 
   // User enters chat
   userForm.on("submit", function (e) {
@@ -15,8 +19,10 @@ $(document).ready(function () {
     socket.emit("setUser", username.val(), function (data) {
       if (data) {
         $("#userFormContainer").hide();
+        chatContainer.fadeIn();
+        welcomeMessage.html("Welcome to the chatroom, " + username.val())
       } else {
-        error.html("Username is taken");
+        alert('That username is already taken')
       }
     });
     e.preventDefault();
@@ -39,7 +45,7 @@ $(document).ready(function () {
   socket.on("users", (data) => {
     let html = "";
     for (let i = 0; i < data.length; i++) {
-      html += "<li>" + data[i] + "</li>";
+      html += "<li class='pa2 bg-light-green'>" + data[i] + "</li>";
     }
     userList.html(html);
   });
